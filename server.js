@@ -27,6 +27,9 @@ const corsOptions ={
 connectDB()
 app.use(morgan('dev'))
 app.use(cors(corsOptions))
+app.get("/", (req, res) => {
+    res.json({ msg: "Welcome to shoppyfloor" });
+  });
 app.get('/api/keys/paypal', (req, res) => {
     res.send(process.env.PAYPAL_CLIENT_ID || 'sb');
   });
