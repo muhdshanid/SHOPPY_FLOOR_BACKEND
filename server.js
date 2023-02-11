@@ -19,14 +19,14 @@ import orderRouter from './routes/orderRoutes.js'
 dotenv.config()
 const app = express()
 const PORT = process.env.PORT || 5000
-const corsOptions ={
-    origin:'', 
-    credentials:true, 
-    optionSuccessStatus:200
-}
+// const corsOptions ={
+//     origin:'', 
+//     credentials:true, 
+//     optionSuccessStatus:200
+// }
 connectDB()
 app.use(morgan('dev'))
-app.use(cors(corsOptions))
+app.use(cors())
 app.get("/", (req, res) => {
     res.json({ msg: "Welcome to shoppyfloor" });
   });
