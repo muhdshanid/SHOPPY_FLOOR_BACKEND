@@ -109,8 +109,9 @@ export const getFilteredProducts = asyncHandler(async(req,res) => {
     const {category,brand,price,rating} = req.params
     const ascendingOrDescending = price == -1 ? -1 : 1
     const star = rating == 0 ? {$exists: true} : rating
+    const brandQuery =    brand !== "empty" ? brand : {$exists: true} 
     const trimCat = category.trim()
-    const filteredProducts = await ProductModel.find({category:trimCat,brand,totalRatings:star})
+    const filteredProducts = await ProductModel.find({category:trimCat,brand:brandQuery,totalRatings:star})
     .sort({discountPrice:ascendingOrDescending})
     return res.status(200).json(filteredProducts)
   } catch (error) {
