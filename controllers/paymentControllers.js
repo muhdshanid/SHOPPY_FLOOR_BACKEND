@@ -100,8 +100,8 @@ export const checkoutSession = asyncHandler(async (request, response) => {
          const order = await OrderModel.create({
             productId: ctr._id,
             userId: ctr.userId,
-            size: ctr.size.name,
-            color: ctr.color.color,
+            size: ctr?.size?.name,
+            color: ctr?.color?.color,
             quantities: ctr.quantity,
             address: data.customer_details.address,
           });
